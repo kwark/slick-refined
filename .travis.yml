@@ -4,7 +4,7 @@ scala:
    - 2.12.3
 
 script:
-   - sbt ++$TRAVIS_SCALA_VERSION test
+   - sbt ++$TRAVIS_SCALA_VERSION coverage test
 
 sudo: false
 
@@ -17,6 +17,7 @@ cache:
     - $HOME/.sbt
 
 after_success:
+  - sbt coverageReport coveralls
   - find $HOME/.sbt -name "*.lock" | xargs rm
   - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
 

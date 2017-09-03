@@ -1,25 +1,24 @@
-language: scala
-
-scala:
-   - 2.11.11
-   - 2.12.3
-
-script:
-   - sbt ++$TRAVIS_SCALA_VERSION coverage test
-
 sudo: false
-
+language: scala
+scala:
+- 2.11.11
+- 2.12.3
+script:
+- sbt ++$TRAVIS_SCALA_VERSION coverage test
 jdk:
-   - oraclejdk8
-
+- oraclejdk8
 cache:
   directories:
-    - $HOME/.ivy2/cache
-    - $HOME/.sbt
-
+  - $HOME/.ivy2/cache
+  - $HOME/.sbt
 after_success:
-  - if [ $TRAVIS_PULL_REQUEST = 'false' ]; then sbt ++$TRAVIS_SCALA_VERSION releaseEarly
-  - sbt coverageReport coveralls
-  - find $HOME/.sbt -name "*.lock" | xargs rm
-  - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
-
+- if [ $TRAVIS_PULL_REQUEST = 'false' ]; then
+    sbt ++$TRAVIS_SCALA_VERSION releaseEarly;
+  fi
+- sbt coverageReport coveralls
+- find $HOME/.sbt -name "*.lock" | xargs rm
+- find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
+env:
+  global:
+  - secure: iFKZFryyBPh1wSWQsU4guA3wHB6o8omr5e6/YzXRf/Q4sDHEb7FRLxjpXzFpXcQqG4PPve70AsGb5tuQsFibGCF576Pj8j0Ci7wGdfGB9G6U8lswRauSJ5TUr9TKQrjRPmsij3YK5REChP1+h08DadLEEy2/4Pce9nqdjFkMeuDHv71SFMrqXk23rX4PkoGx5JXUwexPpduI5J2lPL65ot8A8oX61ROnO8g1Ga2KEdtp1TITvHUVp8snVJvTQwhKpLvfuZX0YPZk2GBljMNpl89hUTAYmY4kYjBed36aGZ6/IFTkEvsLH2FvJRI/RJEbudOqtJqsrAavjEDivVfFDTNJFgrFwJumtMVB44aiV2CHzH14c+QrJoaILZU2A/vCkjXUCGgsaOGL+5x9qVaDpwyfmStciqjGB2mwygvtFhiHXhQS2iM1YMAfNs3PS0W4ZU3Y0m1HYADA0FLHEvxuupcySpXN1xjepwEbQqt2PePygZhgGXdl49tXjK5ops5Ir+NRMfY3WQMw7+Y34MhjoXxIgq2KHVjiVNnY7Eh3It1F/ZPp9+eQ2OUN5YM5lOwKhutQitu9J/ATfcC/0v3tUfH0Hk9GbrlytCspGLayX/r0nFaIcDP2BvjGikK9kCq6/Vcsc64jhJFFfcCvv6uSJLaeuBqpXaqZLOIwZZDooXw=
+  - secure: BqyJ+NL8CMa7Eg77fVnHWw/jRYl4eqdLhkABKCyymBiYZ8C+uGG5DllWQXUTSZuRts/W2UvY59+UgN9kSx7/V4pYadaaVWKYbT/d+aCq4KtalstHsviOyGEPlaYPaKZ3zNGAIGYOFPKnUvjP9/idlniuuh2CLFoZeXtFtPCrsp2kLdzrRovy0Q9oTU3mZScEXnzED7Gmtzq3YiUQ1kmQTaHoFb8ULXsPRTRrDJ9RbfRDovBWQRCBZo5NOLMTxY5QNuf7QhGngBnrQUTHFaQ1RJBrWjR1weGvJaaII7evmrT86/kpjdudVHhY72Fls95tROXULHRjv6Te3JGLh8aqk62l5l2g8wdNqsJ4dxjECXpI+ztvHLJ3KGZ3XPuq4OqP8xKzp507nVzy3tPQ7A3dpZV1NVY7j01eO7a34iYZVaqy2gR/7Ur2XBusvwtY6oIGJaNpC5/S+ukEc37PAv3U4mt/k7iRCYrPETrNd5SlgPO8x6hsqw7dy7nSJp8Atsulyt8mxL04HQ9xpVAMilphFcCAN15zi95NfBvsTJjpLh1f+Z9TiDPF2JME26cFbaDMhKcP0i6O8C4h3vuvc9uLC5TqVi8QA7WN+9mVLDDfvBcwFUTQr5+LCqTcmWTNYrVJYVozuKKmjkpwPY//UF+WPscJ2/fIYwUFC0404yePW1Y=

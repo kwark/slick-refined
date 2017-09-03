@@ -1,6 +1,7 @@
 language: scala
 
 scala:
+   - 2.11.11
    - 2.12.3
 
 script:
@@ -17,6 +18,7 @@ cache:
     - $HOME/.sbt
 
 after_success:
+  - if [ $TRAVIS_PULL_REQUEST = 'false' ]; then sbt ++$TRAVIS_SCALA_VERSION releaseEarly
   - sbt coverageReport coveralls
   - find $HOME/.sbt -name "*.lock" | xargs rm
   - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm

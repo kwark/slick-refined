@@ -1,8 +1,5 @@
 name := "slick-refined"
-
-version := "0.1.0-SNAPSHOT"
-
-scalaVersion := "2.12.3"
+organization := "be.venneborg"
 
 scalacOptions in ThisBuild ++= Seq(
   "-target:jvm-1.8",
@@ -19,6 +16,20 @@ scalacOptions in ThisBuild ++= Seq(
   "-language:experimental.macros",
   "-Ydelambdafy:method"
 )
+
+releaseEarlyWith := BintrayPublisher
+releaseEarlyEnableSyncToMaven := false
+
+publishMavenStyle := true
+publishArtifact in Test := false
+bintrayRepository := "maven" // this is also the default
+
+scmInfo := Some(ScmInfo(url("https://github.com/kwark/slick-refined"), "scm:git:git@github.com/kwark/slick-refined.git"))
+developers := List(
+  Developer("kwark", "Peter Mortier", "", url("https://github.com/kwark"))
+)
+licenses := Seq(("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.txt")))
+homepage := Some(url("https://github.com/kwark/slick-refined"))
 
 libraryDependencies ++= Seq(
   "eu.timepit"                 %%    "refined"                        % "0.8.2",

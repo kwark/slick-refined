@@ -24,6 +24,6 @@ env:
   - secure: RVOvM2MoAf0tn9oxqgX7BGlUg6e71yVVCN3sb57ZAmuOi/4HKhl0uMXMhQwsXN7wIk4ohTVsDJVXF9y5HKH7EY0zcWHMv+Va+1NOwdEg9xaaoMsUMTCHJo7czcK/kT3wqmcvw5+VlUVfosurMTidEPCQ2Qbd2tVy/vTL3Y92+QFEC/OvuMvAGvVQVggjlNzV+V1g3rt1XrbJ53bxMrwg0kwuVMbqq4AegGVyDhY3AKppSnWwZv6bWTHJzH62NDILSArG4+RmNpD5M6DRtBSAAYx5b8KfpYTeWv2qi4JE+930s9xfPknFnwqdg11O6hE14tjOEGOQ46SwjgT1cmfIufBIVzMKMwjE3XmltpoWtKJvii4jGw5Ap48m2ERVorCTQHaEAD5WpCU58VqkPGKTLZGtArrmdpLpGgQ/Co+3Rf/yKLVhTmXtVe+R96N/lKFAMnSu4G2FphcXhysrBpbOu4fyZl+P0ZWRdQ7BaM1yLR4hs6iT5BJjFFBpQNeD838pMhHF2ckfmxNMFKd9vc8VZKLJ7hEtSnRtQH3Dzl2sdJDdChI8pz2kHorKf/73fSjsEkLq1jhcJ1j3uLW0aAEST4uHgATcsgD4Puo6nB+5vaCzXt/VBm7p16AZn8NU4Tqi+X5IJxwnUe19olnWYAcXCKawgVLHJOX5WVaST+MwdLI=
 before_install:
 - if [ $TRAVIS_PULL_REQUEST = 'false' ]; then
-    openssl aes-256-cbc -K $encrypted_474c3e42cec4_key -iv $encrypted_474c3e42cec4_iv in travis/secrets.tar.enc -out travis/secrets.tar -d;
-    tar xv -C travis -f travis/secrets.tar;
-  fi
+  - openssl aes-256-cbc -K $encrypted_474c3e42cec4_key -iv $encrypted_474c3e42cec4_iv in travis/secrets.tar.enc -out travis/secrets.tar -d;
+  - tar xv -C travis -f travis/secrets.tar;
+- fi

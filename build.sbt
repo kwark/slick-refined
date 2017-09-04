@@ -24,8 +24,8 @@ publishMavenStyle := true
 publishArtifact in Test := false
 bintrayRepository := "maven" // this is also the default
 
-pgpPublicRing := file("/travis/local.pubring.asc")
-pgpSecretRing := file("/travis/local.secring.asc")
+pgpPublicRing := file("./travis/local.pubring.asc")
+pgpSecretRing := file("./travis/local.secring.asc")
 
 scmInfo := Some(ScmInfo(url("https://github.com/kwark/slick-refined"), "scm:git:git@github.com/kwark/slick-refined.git"))
 developers := List(

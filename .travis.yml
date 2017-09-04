@@ -23,6 +23,7 @@ env:
   - secure: sCWfuRIRdT2enXitfOINy1buZOpCHC/kypcQ8HvoUD5rEwAfRGp3LF2YUKTma3sxu+BMAymyqBdJFHXxu4xsh7iXjRLvaKdW4RMxavDE8aS5ihlpJdak4U4/M6G9VJ8mAW9Q3EkQ3JgBSOyrIsx4YqvMf4+QLUKjyfitYfjDNuzW8ia7TPjs1ZYTKG9Q1HdB5b3VA4GfIptScDS2Xk+2pRYKSwtGwlU3znlGpeR6ALX/TJbticBUs7VMPQ54wHngyMY9P8i3Alxk3q6xESKbS5Z33cpbKT/iZnpjY5LuvSEPSejGjkZplZBSQpcN6E+2XAOZX2tosy5N35FckQWiEHBRxlx5wlWSfdez41yXCdo9r/HyCfoi8p9/Vf/PLH6KI5MN08DAzD2diQkd/XL+UqLz1KPe9VghdgB298H9BVFrjcyd1PjoeY/pJ6h8j2W56S61u/t6xlAbEGxMWZqqPORLTG5IJKcvahwYAXJsfLgEGOlqv1GIDlSPTyHtLAk1XOY2+FKdAHJLlam+MLSK4tHJx1c8lDWtncIMvWKOv/NbsCA2glTz5upnZwDC5d0VykPk24WfY9h4+/DmFya93Nu1RfCws5rmeVoG+Az7md+o8ogCN1PkTTVLNO6B/46jRwAeSaQbtHwq71i7hkIsnyvOOpFu9SmyO1/FqMakP60=
   - secure: RVOvM2MoAf0tn9oxqgX7BGlUg6e71yVVCN3sb57ZAmuOi/4HKhl0uMXMhQwsXN7wIk4ohTVsDJVXF9y5HKH7EY0zcWHMv+Va+1NOwdEg9xaaoMsUMTCHJo7czcK/kT3wqmcvw5+VlUVfosurMTidEPCQ2Qbd2tVy/vTL3Y92+QFEC/OvuMvAGvVQVggjlNzV+V1g3rt1XrbJ53bxMrwg0kwuVMbqq4AegGVyDhY3AKppSnWwZv6bWTHJzH62NDILSArG4+RmNpD5M6DRtBSAAYx5b8KfpYTeWv2qi4JE+930s9xfPknFnwqdg11O6hE14tjOEGOQ46SwjgT1cmfIufBIVzMKMwjE3XmltpoWtKJvii4jGw5Ap48m2ERVorCTQHaEAD5WpCU58VqkPGKTLZGtArrmdpLpGgQ/Co+3Rf/yKLVhTmXtVe+R96N/lKFAMnSu4G2FphcXhysrBpbOu4fyZl+P0ZWRdQ7BaM1yLR4hs6iT5BJjFFBpQNeD838pMhHF2ckfmxNMFKd9vc8VZKLJ7hEtSnRtQH3Dzl2sdJDdChI8pz2kHorKf/73fSjsEkLq1jhcJ1j3uLW0aAEST4uHgATcsgD4Puo6nB+5vaCzXt/VBm7p16AZn8NU4Tqi+X5IJxwnUe19olnWYAcXCKawgVLHJOX5WVaST+MwdLI=
 before_install:
-- openssl aes-256-cbc -K $encrypted_474c3e42cec4_key -iv $encrypted_474c3e42cec4_iv
-  -in travis/secrets.tar.enc -out travis/secrets.tar -d
-- tar xv -C travis -f travis/secrets.tar
+- if [ $TRAVIS_PULL_REQUEST = 'false' ]; then
+    openssl aes-256-cbc -K $encrypted_474c3e42cec4_key -iv $encrypted_474c3e42cec4_iv in travis/secrets.tar.enc -out travis/secrets.tar -d
+    tar xv -C travis -f travis/secrets.tar
+  fi

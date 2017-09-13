@@ -250,6 +250,16 @@ class SlickSuite extends FunSuite with BeforeAndAfterEach with ScalaFutures with
     db.run(sql"""select NAME FROM PERSONS WHERE EVEN = ${peter.even}""".as[Name]).futureValue.headOption shouldBe Some(peter.name)
   }
 
+  test("retrieving invalid data with plain sql should fail") {
+    db.run(sqlu"""insert into persons values (1, '', -1, NULL, 10, 10000L, NULL)""").futureValue
+
+    import RefinedPlainSql._
+
+    db.run(sql"""select ID, NAME, AGE, INITIALS, STARS, NEGATIVE, EVEN FROM PERSONS WHERE id = 1""".as[(Long, Name, Age, Option[Initials], Option[Stars], NegativeLong, Option[EvenLong])])
+      .failed.futureValue shouldBe an[IllegalArgumentException]
+
+  }
+
   override def beforeEach(): Unit = {
     db = Database.forConfig("h2mem1")
     db.run(persons.schema.create).futureValue

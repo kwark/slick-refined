@@ -7,7 +7,7 @@ scalacOptions in ThisBuild ++= Seq(
   "-deprecation", // warning and location for usages of deprecated APIs
   "-feature", // warning and location for usages of features that should be imported explicitly
   "-unchecked", // additional warnings where generated code depends on assumptions
-  //  "-Xlint", // recommended additional warnings
+  "-Xlint", // recommended additional warnings
   "-Ywarn-adapted-args", // Warn if an argument list is modified to match the receiver
   "-Ywarn-inaccessible",
   "-Ywarn-dead-code",
@@ -16,6 +16,8 @@ scalacOptions in ThisBuild ++= Seq(
   "-language:experimental.macros",
   "-Ydelambdafy:method"
 )
+
+//mimaReportBinaryIssues := Set("be.venneborg" %% "slick-refined" % "0.0.1")
 
 releaseEarlyWith := BintrayPublisher
 releaseEarlyEnableSyncToMaven := false
@@ -35,7 +37,7 @@ licenses := Seq(("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.t
 homepage := Some(url("https://github.com/kwark/slick-refined"))
 
 libraryDependencies ++= Seq(
-  "eu.timepit"                 %%    "refined"                        % "0.8.2",
+  "eu.timepit"                 %%    "refined"                        % "0.8.4",
   "com.typesafe.slick"         %%    "slick"                          % "3.2.1",
   "org.scalatest"              %%    "scalatest"                      % "3.0.4"   % "test",
   "com.h2database"              %    "h2"                             % "1.4.196" % "test"

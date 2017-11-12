@@ -1,7 +1,6 @@
 package be.venneborg.refined
 
 
-import eu.timepit.refined._
 import eu.timepit.refined.auto._
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.time.{Seconds, Span}

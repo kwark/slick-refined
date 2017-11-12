@@ -80,7 +80,7 @@ trait RefinedExtensions extends JdbcTypesComponent { driver: JdbcProfile =>
     def indexOf[P2, R](str: Rep[P2])(implicit om: o#arg[String, P2]#to[Int, R]) =
       om.column(Library.IndexOf, n, str.toNode)
 
-    def *[P1, R](i: Rep[P1])(implicit om: o#arg[Int, P1]#to[String, R]) =
+    def *[P2, R](i: Rep[P2])(implicit om: o#arg[Int, P2]#to[String, R]) =
       om.column(Library.Repeat, n, i.toNode)
   }
 
@@ -101,7 +101,7 @@ trait RefinedExtensions extends JdbcTypesComponent { driver: JdbcProfile =>
     /** Compute the sum of a single-column Query, or `None` if the Query is empty */
     def sum(implicit tm: OptionTM) = Library.Sum.column[Option[T]](q.toNode)
 
-    /** Count the number of `Some` elements of a single-column Query. */
+//    /** Count the number of `Some` elements of a single-column Query. */
 //    def countDefined(implicit ev: P1 <:< Option[_]) = Library.Count.column[Int](q.toNode) //TODO
   }
 

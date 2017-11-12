@@ -3,7 +3,6 @@ package be.venneborg.refined
 import eu.timepit.refined.api.Refined
 import slick.ast.{BaseTypedType, NumericTypedType, TypedType}
 import slick.jdbc.JdbcProfile
-import slick.lifted.SingleColumnQueryExtensionMethods
 
 import scala.language.{higherKinds, implicitConversions}
 

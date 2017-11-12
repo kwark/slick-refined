@@ -8,6 +8,8 @@ import scala.language.higherKinds
 
 trait RefinedMapping { self: JdbcProfile =>
 
+  def useValidation: Boolean = true
+
   object mapping {
 
     trait Wrap[F[_, _]] {
@@ -16,7 +18,8 @@ trait RefinedMapping { self: JdbcProfile =>
 
     object Wrap {
       implicit val wrapRefined: Wrap[Refined] = new Wrap[Refined] {
-        override def apply[T, P](t: T)(implicit v: Validate[T,P]): Refined[T, P] = refineV.unsafeFrom(t)
+        override def apply[T, P](t: T)(implicit v: Validate[T,P]): Refined[T, P] =
+          if (useValidation) refineV.unsafeFrom(t) else Refined.unsafeApply(t)
       }
     }
 

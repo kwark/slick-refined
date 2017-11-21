@@ -53,6 +53,7 @@ class SlickSuite extends FunSuite with BeforeAndAfterEach with ScalaFutures with
 
     //++
     db.run(persons.map(p => p.name ++ "_").result).futureValue should contain theSameElementsAs Seq("Peter_", "Bart_", " Space Cowboy _")
+
     //TODO
     //db.run(persons.map(p => "_" ++ p.name ++ "_").result.headOption).futureValue shouldBe Some("_Peter_")
     //db.run(persons.map(p => p.name ++ "_" ++ p.name).result.headOption).futureValue shouldBe Some("Peter Peter")
@@ -60,6 +61,10 @@ class SlickSuite extends FunSuite with BeforeAndAfterEach with ScalaFutures with
     //like
     db.run(persons.filter(_.name like "%eter").result).futureValue should contain theSameElementsAs Seq(peter)
     db.run(persons.filter(_.name like "%ETER").result).futureValue shouldBe Seq.empty
+
+    //ilike
+    db.run(persons.filter(_.name ilike "%EtEr").result).futureValue should contain theSameElementsAs Seq(peter)
+    db.run(persons.filter(_.name ilike "%Ete").result).futureValue shouldBe Seq.empty
 
     //startsWith
     db.run(persons.filter(_.name startsWith "Pe").result).futureValue should contain theSameElementsAs Seq(peter)

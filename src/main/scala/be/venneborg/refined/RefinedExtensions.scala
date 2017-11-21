@@ -1,15 +1,19 @@
 package be.venneborg.refined
 
 import eu.timepit.refined.api.Refined
+import slick.ast.Library.SqlOperator
 import slick.ast._
 import slick.jdbc.{JdbcProfile, JdbcTypesComponent}
 import slick.lifted.ExtensionMethods
 import slick.lifted.FunctionSymbolExtensionMethods._
+
 import scala.language.higherKinds
 
 trait RefinedExtensions extends JdbcTypesComponent { driver: JdbcProfile =>
 
   import driver.api._
+
+  val ILike = new SqlOperator("ilike")
 
   class RefinedNumericColumnExtensionMethods[NN, N, D, P, P1](val c: Rep[P1])
                                                              (implicit tm: BaseTypedType[N] with NumericTypedType,
@@ -45,6 +49,10 @@ trait RefinedExtensions extends JdbcTypesComponent { driver: JdbcProfile =>
     def like[P2, R](e: Rep[P2], esc: Char = '\u0000')(implicit om: o#arg[String, P2]#to[Boolean, R]) =
       if(esc == '\u0000') om.column(Library.Like, n, e.toNode)
       else om.column(Library.Like, n, e.toNode, LiteralNode(esc))
+
+    def ilike[P2, R](e: Rep[P2])(implicit om: o#arg[String, P2]#to[Boolean, R]) = {
+      om.column(ILike, n, e.toNode)
+    }
 
     def ++[P2, R](e: Rep[P2])(implicit om: o#arg[String, P2]#to[String, R]) =
       om.column(Library.Concat, n, e.toNode)

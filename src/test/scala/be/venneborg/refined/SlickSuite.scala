@@ -29,6 +29,19 @@ class SlickSuite extends FunSuite with BeforeAndAfterEach with ScalaFutures with
 
   val persons = TableQuery[Persons]
 
+  class TestTable(tag: Tag) extends Table[(Int, PosDouble, Option[PosDouble], NegativeFloat, Option[NegativeFloat])](tag, "TESTTABLE") {
+    def id = column[Int]("ID", O.PrimaryKey)
+    def double = column[PosDouble]("DOUBLE")
+    def odouble = column[Option[PosDouble]]("ODOUBLE")
+    def float = column[NegativeFloat]("FLOAT")
+    def ofloat = column[Option[NegativeFloat]]("OFLOAT")
+
+    def * = (id, double, odouble, float, ofloat)
+  }
+
+  val testTable = TableQuery[TestTable]
+
+
   var db: TestRefinedProfile.backend.DatabaseDef = _
 
   test("storing and retrieving valid refined types") {
@@ -264,9 +277,22 @@ class SlickSuite extends FunSuite with BeforeAndAfterEach with ScalaFutures with
 
   }
 
+  test("plain sql queries for additional refined types") {
+    val tuple: (Int, PosDouble, Option[PosDouble], NegativeFloat, Option[NegativeFloat]) = (1, 5.0d, None, -10.3f, Some(-999.9f))
+    db.run(testTable += tuple).futureValue
+
+    import RefinedPlainSql._
+
+    db.run(sql"""select ID, DOUBLE, ODOUBLE, FLOAT, OFLOAT FROM TESTTABLE WHERE id = 1""".as[(Int, PosDouble, Option[PosDouble], NegativeFloat, Option[NegativeFloat])])
+      .futureValue.headOption shouldBe Some(tuple)
+  }
+
+
   override def beforeEach(): Unit = {
     db = Database.forConfig("h2mem1")
-    db.run(persons.schema.create).futureValue
+    db.run(persons.schema.create
+      .andThen(testTable.schema.create)
+    ).futureValue
   }
 
   override def afterEach(): Unit = {

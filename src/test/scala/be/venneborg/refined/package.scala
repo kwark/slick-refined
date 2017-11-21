@@ -16,4 +16,7 @@ package object refined {
   type NegativeLong = Long Refined Negative
   type EvenLong = Long Refined Even
 
+
+  type PosDouble = Double Refined Positive
+  type NegativeFloat = Float Refined Negative
 }

@@ -18,7 +18,6 @@ scalacOptions in ThisBuild ++= Seq(
 )
 
 releaseEarlyWith := BintrayPublisher
-releaseEarlyEnableSyncToMaven := false
 
 publishMavenStyle := true
 publishArtifact in Test := false

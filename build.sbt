@@ -17,8 +17,6 @@ scalacOptions in ThisBuild ++= Seq(
   "-Ydelambdafy:method"
 )
 
-//mimaReportBinaryIssues := Set("be.venneborg" %% "slick-refined" % "0.0.1")
-
 releaseEarlyWith := BintrayPublisher
 releaseEarlyEnableSyncToMaven := false
 

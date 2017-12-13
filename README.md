@@ -4,7 +4,7 @@
 [![Maven version](https://img.shields.io/maven-central/v/be.venneborg/slick-refined_2.12.svg)](https://maven-badges.herokuapp.com/maven-central/be.venneborg/slick-refined_2.12)
 
 Slick-refined is a small scala library that enables boilerplate-free integration of refinement types 
-using the [Refined library](https://github.com/fthomas/refined) with Lightbend's []Slick library](http://slick.lightbend.com/).
+using the [Refined library](https://github.com/fthomas/refined) with Lightbend's [Slick library](http://slick.lightbend.com/).
 
 It allows you to easily store/retrieve and manipulate Refined types to/from an SQL database.  
 

@@ -30,7 +30,7 @@ Next you'll need to create a trait which extends the [Slick Profile](http://slic
 for your specific database as follows:
 
 ```
-import be.venneborg.refined.RefinedMappping
+import be.venneborg.refined.RefinedMapping
 import be.venneborg.refined.RefinedSupport
 
 trait MyRefinedProfile extends slick.jdbc.XXXProfile

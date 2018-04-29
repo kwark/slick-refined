@@ -9,7 +9,7 @@ using the [Refined library](https://github.com/fthomas/refined) with Lightbend's
 It allows you to easily store/retrieve and manipulate Refined types to/from an SQL database.  
 
 Both scala 2.11 & 2.12 are supported.
-You'll also need to use Java8 and slick 3.2.1.
+You'll also need to use Java8 and slick 3.2.x.
 
 The library supports the following functionality:
 

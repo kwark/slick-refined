@@ -34,8 +34,8 @@ licenses := Seq(("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.t
 homepage := Some(url("https://github.com/kwark/slick-refined"))
 
 libraryDependencies ++= Seq(
-  "eu.timepit"                 %%    "refined"                        % "0.8.4",
-  "com.typesafe.slick"         %%    "slick"                          % "3.2.1",
-  "org.scalatest"              %%    "scalatest"                      % "3.0.4"   % "test",
-  "com.h2database"              %    "h2"                             % "1.4.196" % "test"
+  "eu.timepit"                 %%    "refined"                        % "0.9.0",
+  "com.typesafe.slick"         %%    "slick"                          % "3.2.3",
+  "org.scalatest"              %%    "scalatest"                      % "3.0.5"   % "test",
+  "com.h2database"              %    "h2"                             % "1.4.197" % "test"
 )

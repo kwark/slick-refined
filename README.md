@@ -22,7 +22,7 @@ The library supports the following functionality:
 
 You first need to add the following dependency to your SBT dependencies:
 
-```libraryDependencies += "be.venneborg" %% "slick-refined" % 0.1.0```
+```libraryDependencies += "be.venneborg" %% "slick-refined" % 0.2.0```
 
 ### Refined Profile
 

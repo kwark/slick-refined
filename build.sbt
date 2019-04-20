@@ -8,8 +8,8 @@ scalacOptions in ThisBuild ++= Seq(
   "-feature", // warning and location for usages of features that should be imported explicitly
   "-unchecked", // additional warnings where generated code depends on assumptions
   "-Xlint", // recommended additional warnings
-  "-Ywarn-adapted-args", // Warn if an argument list is modified to match the receiver
-  "-Ywarn-inaccessible",
+//  "-Ywarn-adapted-args", // Warn if an argument list is modified to match the receiver
+//  "-Ywarn-inaccessible",
   "-Ywarn-dead-code",
   "-Xfatal-warnings",
   "-language:reflectiveCalls",

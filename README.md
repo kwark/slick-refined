@@ -20,10 +20,10 @@ The library supports the following functionality:
 
 ## Usage
 
-| Slick version | Scala Version | Version to use |
-| ------------- | ------------- | ----- |
-| 3.2.x         | 2.11.x or 2.12.x | 0.2.0 |
-| 3.3.0         | 2.11.x or 2.12.x | 0.4.0 |
+| Slick | Scala            | Refined | Version to use |
+| ----- | ---------------- | ------- | -------------- |
+| 3.2.x | 2.11.x or 2.12.x | 0.9.0   | 0.2.0          | 
+| 3.3.0 | 2.11.x or 2.12.x | 0.9.4   | 0.4.0          |
 
 
 You first need to add the following dependency to your SBT dependencies:

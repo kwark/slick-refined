@@ -7,8 +7,6 @@ import slick.jdbc.{JdbcProfile, JdbcTypesComponent}
 import slick.lifted.ExtensionMethods
 import slick.lifted.FunctionSymbolExtensionMethods._
 
-import scala.language.higherKinds
-
 trait RefinedExtensions extends JdbcTypesComponent { driver: JdbcProfile =>
 
   import driver.api._

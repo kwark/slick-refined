@@ -4,8 +4,6 @@ import eu.timepit.refined._
 import eu.timepit.refined.api.{Refined, Validate}
 import slick.jdbc.JdbcProfile
 
-import scala.language.higherKinds
-
 trait RefinedMapping { self: JdbcProfile =>
 
   def useValidation: Boolean = true

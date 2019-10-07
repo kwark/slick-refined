@@ -14,6 +14,7 @@ scalacOptions in ThisBuild ++= Seq(
   "-Xfatal-warnings",
   "-language:reflectiveCalls",
   "-language:experimental.macros",
+  "-language:higherKinds",
   "-Ydelambdafy:method"
 )
 

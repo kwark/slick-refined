@@ -4,7 +4,7 @@ import eu.timepit.refined.api.Refined
 import slick.ast.{BaseTypedType, NumericTypedType, TypedType}
 import slick.jdbc.JdbcProfile
 
-import scala.language.{higherKinds, implicitConversions}
+import scala.language.implicitConversions
 
 trait RefinedSupport extends RefinedExtensions { driver: JdbcProfile =>
 

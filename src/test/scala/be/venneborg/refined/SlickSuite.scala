@@ -4,9 +4,11 @@ package be.venneborg.refined
 import eu.timepit.refined.auto._
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.time.{Seconds, Span}
-import org.scalatest.{BeforeAndAfterEach, FunSuite, Matchers}
+import org.scalatest.BeforeAndAfterEach
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
 
-class SlickSuite extends FunSuite with BeforeAndAfterEach with ScalaFutures with Matchers {
+class SlickSuite extends AnyFunSuite with BeforeAndAfterEach with ScalaFutures with Matchers {
 
   import TestRefinedProfile.api._
   import TestRefinedProfile.mapping._

@@ -37,6 +37,6 @@ homepage := Some(url("https://github.com/kwark/slick-refined"))
 libraryDependencies ++= Seq(
   "eu.timepit"                 %%    "refined"                        % "0.9.10",
   "com.typesafe.slick"         %%    "slick"                          % "3.3.2",
-  "org.scalatest"              %%    "scalatest"                      % "3.0.8"   % "test",
+  "org.scalatest"              %%    "scalatest"                      % "3.2.0"   % "test",
   "com.h2database"              %    "h2"                             % "1.4.200" % "test"
 )

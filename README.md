@@ -36,7 +36,7 @@ You first need to add the following dependency to your SBT dependencies:
 Next you'll need to create a trait which extends the [Slick Profile](http://slick.lightbend.com/doc/3.2.1/concepts.html#profiles) 
 for your specific database as follows:
 
-```
+```scala
 import be.venneborg.refined.RefinedMapping
 import be.venneborg.refined.RefinedSupport
 
@@ -58,7 +58,7 @@ To map case classes or tuples containing Refined types, you need to slightly ada
 
 Suppose we have a case class which uses Refined types:
 
-```
+```scala
 import eu.timepit.refined.types.string.NonEmptyString
 import eu.timepit.refined.types.numeric.PosInt
 
@@ -68,7 +68,7 @@ case class FooBar(foo: NonEmptyString, bar: PosInt)
 
 To map this class to a database table, you can do the following:
 
-```
+```scala
 object RefinedSchema {
 
   import be.venneborg.refined.MyRefinedProfile.api._
@@ -97,7 +97,7 @@ The only difference with mapping a normal case class, which does not use refined
 You can use [Slick queries](http://slick.lightbend.com/doc/3.2.1/queries.html) on your Refined types and they will work 
 exactly the same as if you would run them on the unrefined base type.
 
-```
+```scala
 import be.venneborg.refined.MyRefinedProfile.api._
 
 val db = <some Slick database object>
@@ -116,7 +116,7 @@ The library also supports [Slick Plain SQL queries](http://slick.lightbend.com/d
 
 Example:
 
-```
+```scala
 import be.venneborg.refined.RefinedPlainSql._
 import eu.timepit.refined.auto._
 

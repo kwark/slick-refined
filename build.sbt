@@ -18,6 +18,14 @@ scalacOptions in ThisBuild ++= Seq(
   "-Ydelambdafy:method"
 )
 
+// https://github.com/scala/bug/issues/12226
+scalacOptions in ThisBuild ++= (if (scalaBinaryVersion.value == "2.13")
+  Seq("-Xlint:-implicit-recursion", "-Wconf:cat=lint-multiarg-infix:silent")
+else
+  Seq.empty
+)
+
+
 releaseEarlyWith := BintrayPublisher
 
 publishMavenStyle := true

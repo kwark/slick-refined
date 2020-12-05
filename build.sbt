@@ -8,8 +8,6 @@ scalacOptions in ThisBuild ++= Seq(
   "-feature", // warning and location for usages of features that should be imported explicitly
   "-unchecked", // additional warnings where generated code depends on assumptions
   "-Xlint", // recommended additional warnings
-  // https://github.com/scala/bug/issues/12226
-  if (scalaBinaryVersion.value == "2.13") "-Xlint:-implicit-recursion" else "",
 //  "-Ywarn-adapted-args", // Warn if an argument list is modified to match the receiver
 //  "-Ywarn-inaccessible",
   "-Ywarn-dead-code",
@@ -18,7 +16,15 @@ scalacOptions in ThisBuild ++= Seq(
   "-language:experimental.macros",
   "-language:higherKinds",
   "-Ydelambdafy:method"
-).filter(_.nonEmpty)
+)
+
+// https://github.com/scala/bug/issues/12226
+scalacOptions in ThisBuild ++= (if (scalaBinaryVersion.value == "2.13")
+  Seq("-Xlint:-implicit-recursion", "-Wconf:cat=lint-multiarg-infix:silent")
+else
+  Seq.empty
+)
+
 
 releaseEarlyWith := BintrayPublisher
 

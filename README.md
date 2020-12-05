@@ -25,6 +25,7 @@ The library supports the following functionality:
 | 3.2.x | ✓    | ✓    |      | 0.9.0   | 0.2.0          |        
 | 3.3.0 | ✓    | ✓    |      | 0.9.4   | 0.4.0          |
 | 3.3.2 | ✓    | ✓    | ✓    | 0.9.8   | 0.5.0          |
+| 3.3.3 |      | ✓    | ✓    | 0.9.19  | 0.6.0          |
 
 
 You first need to add the following dependency to your SBT dependencies:

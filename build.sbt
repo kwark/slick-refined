@@ -26,24 +26,22 @@ else
 )
 
 
-releaseEarlyWith := BintrayPublisher
+inThisBuild(List(
+  scmInfo := Some(ScmInfo(url("https://github.com/kwark/slick-refined"), "scm:git:git@github.com/kwark/slick-refined.git")),
+  developers := List(Developer("kwark", "Peter Mortier", "", url("https://github.com/kwark"))),
+  licenses := Seq(("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.txt"))),
+  homepage := Some(url("https://github.com/kwark/slick-refined")),
+  organization := "be.venneborg",
 
-publishMavenStyle := true
-publishArtifact in Test := false
-bintrayRepository := "maven" // this is also the default
+  publishArtifact in Test := false,
+  parallelExecution := false,
 
-pgpPublicRing := file("./travis/local.pubring.asc")
-pgpSecretRing := file("./travis/local.secring.asc")
+  crossScalaVersions := List("2.11.12", "2.12.12", "2.13.4")
+))
 
-scmInfo := Some(ScmInfo(url("https://github.com/kwark/slick-refined"), "scm:git:git@github.com/kwark/slick-refined.git"))
-developers := List(
-  Developer("kwark", "Peter Mortier", "", url("https://github.com/kwark"))
-)
-licenses := Seq(("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.txt")))
-homepage := Some(url("https://github.com/kwark/slick-refined"))
 
 libraryDependencies ++= Seq(
-  "eu.timepit"                 %%    "refined"                        % "0.9.12",
+  "eu.timepit"                 %%    "refined"                        % "0.9.14",
   "com.typesafe.slick"         %%    "slick"                          % "3.3.3",
   "org.scalatest"              %%    "scalatest"                      % "3.2.3"   % "test",
   "com.h2database"              %    "h2"                             % "1.4.200" % "test"

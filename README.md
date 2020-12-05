@@ -1,7 +1,7 @@
 # Slick-refined
 
-[![Build Status](https://travis-ci.org/kwark/slick-refined.svg?branch=master)](https://travis-ci.org/kwark/slick-refined)
-[![Maven version](https://img.shields.io/maven-central/v/be.venneborg/slick-refined_2.12.svg)](https://maven-badges.herokuapp.com/maven-central/be.venneborg/slick-refined_2.12)
+![Build Status](https://github.com/kwark/slick-refined/workflows/test/badge.svg)
+[![Maven version](https://img.shields.io/maven-central/v/be.venneborg/slick-refined_2.13.svg)](https://maven-badges.herokuapp.com/maven-central/be.venneborg/slick-refined_2.13)
 
 Slick-refined is a small scala library that enables boilerplate-free integration of refinement types 
 using the [Refined library](https://github.com/fthomas/refined) with Lightbend's [Slick library](http://slick.lightbend.com/).

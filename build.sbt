@@ -36,7 +36,7 @@ inThisBuild(List(
   publishArtifact in Test := false,
   parallelExecution := false,
 
-  crossScalaVersions := List("2.12.13", "2.13.4")
+  crossScalaVersions := List("2.12.13", "2.13.5")
 ))
 
 

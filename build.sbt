@@ -36,12 +36,12 @@ inThisBuild(List(
   publishArtifact in Test := false,
   parallelExecution := false,
 
-  crossScalaVersions := List("2.12.14", "2.13.6")
+  crossScalaVersions := List("2.12.14", "2.13.7")
 ))
 
 
 libraryDependencies ++= Seq(
-  "eu.timepit"                 %%    "refined"                        % "0.9.26",
+  "eu.timepit"                 %%    "refined"                        % "0.9.27",
   "com.typesafe.slick"         %%    "slick"                          % "3.3.3",
   "org.scalatest"              %%    "scalatest"                      % "3.2.9"   % "test",
   "com.h2database"              %    "h2"                             % "1.4.200" % "test"

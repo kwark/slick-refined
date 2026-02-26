@@ -1,7 +1,7 @@
 name := "slick-refined"
 organization := "be.venneborg"
 
-scalacOptions in ThisBuild ++= Seq(
+ThisBuild / scalacOptions ++= Seq(
   "-target:jvm-1.8",
   "-encoding", "UTF-8",
   "-deprecation", // warning and location for usages of deprecated APIs
@@ -19,7 +19,7 @@ scalacOptions in ThisBuild ++= Seq(
 )
 
 // https://github.com/scala/bug/issues/12226
-scalacOptions in ThisBuild ++= (if (scalaBinaryVersion.value == "2.13")
+ThisBuild / scalacOptions  ++= (if (scalaBinaryVersion.value == "2.13")
   Seq("-Xlint:-implicit-recursion", "-Wconf:cat=lint-multiarg-infix:silent")
 else
   Seq.empty
@@ -31,18 +31,18 @@ inThisBuild(List(
   developers := List(Developer("kwark", "Peter Mortier", "", url("https://github.com/kwark"))),
   licenses := Seq(("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.txt"))),
   homepage := Some(url("https://github.com/kwark/slick-refined")),
-  organization := "be.venneborg",
 
-  publishArtifact in Test := false,
+  Test / publishArtifact := false,
   parallelExecution := false,
 
-  crossScalaVersions := List("2.12.16", "2.13.8")
+  scalaVersion := "2.13.18",
+  crossScalaVersions := List("2.12.21", "2.13.18")
 ))
 
 
 libraryDependencies ++= Seq(
-  "eu.timepit"                 %%    "refined"                        % "0.10.3",
-  "com.typesafe.slick"         %%    "slick"                          % "3.3.3",
-  "org.scalatest"              %%    "scalatest"                      % "3.2.16"   % "test",
-  "com.h2database"              %    "h2"                             % "1.4.200" % "test"
+  "eu.timepit"                 %%    "refined"                        % "0.11.3",
+  "com.typesafe.slick"         %%    "slick"                          % "3.5.2",
+  "org.scalatest"              %%    "scalatest"                      % "3.2.19"  % Test,
+  "com.h2database"              %    "h2"                             % "2.4.240" % Test
 )

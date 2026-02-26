@@ -18,7 +18,7 @@ trait RefinedExtensions extends JdbcTypesComponent { driver: JdbcProfile =>
                                                               tn: TypedType[NN],
                                                               td: TypedType[D]) extends ExtensionMethods[Refined[N, P], P1] {
 
-    protected override implicit def b1Type = implicitly[TypedType[Refined[N, P]]]
+    protected override implicit def b1Type: TypedType[Refined[N, P]] = implicitly[TypedType[Refined[N, P]]]
 
     def + [P2, R](e: Rep[P2])(implicit om: o#arg[N, P2]#to[N, R]) = om.column(Library.+, n, e.toNode)
     def - [P2, R](e: Rep[P2])(implicit om: o#arg[N, P2]#to[N, R]) = om.column(Library.-, n, e.toNode)
@@ -40,7 +40,7 @@ trait RefinedExtensions extends JdbcTypesComponent { driver: JdbcProfile =>
   class RefinedStringColumnExtensionMethods[S, P, P1](val c: Rep[P1])
                                                      (implicit tm: TypedType[S]) extends ExtensionMethods[Refined[String, P], P1] {
 
-    protected implicit def b1Type = implicitly[TypedType[Refined[String, P]]]
+    protected implicit def b1Type: TypedType[Refined[String, P]] = implicitly[TypedType[Refined[String, P]]]
 
     def length[R](implicit om: o#to[Int, R]) = om.column(Library.Length, n)
 

@@ -15,6 +15,12 @@ jobs:
           java-version: "17"
           cache: sbt
       - uses: sbt/setup-sbt@v1
+      - name: Import PGP key
+        env:
+          PGP_SECRET: ${{ secrets.PGP_SECRET }}
+        run: |
+          echo "$PGP_SECRET" | base64 --decode | gpg --batch --import
+          gpg --list-secret-keys --keyid-format LONG
       - name: publish ${{ github.ref }}
         run: sbt ci-release
         env:

@@ -13,7 +13,7 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
-          cache: sbt
+      - uses: sbt/setup-sbt@v1
       - uses: olafurpg/setup-gpg@v3
       - name: publish ${{ github.ref }}
         run: sbt ci-release

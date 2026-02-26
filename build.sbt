@@ -44,5 +44,5 @@ libraryDependencies ++= Seq(
   "eu.timepit"                 %%    "refined"                        % "0.11.3",
   "com.typesafe.slick"         %%    "slick"                          % "3.5.2",
   "org.scalatest"              %%    "scalatest"                      % "3.2.19"  % Test,
-  "com.h2database"              %    "h2"                             % "1.4.200" % Test // JDK 1.8 compatible version of H2
+  "com.h2database"              %    "h2"                             % "2.4.240" % Test
 )

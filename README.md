@@ -34,8 +34,8 @@ You first need to add the following dependency to your SBT dependencies:
 
 ### Refined Profile
 
-Next you'll need to create a trait which extends the [Slick Profile](http://slick.lightbend.com/doc/3.2.1/concepts.html#profiles) 
-for your specific database as follows:
+Next you'll need to create a trait which extends the [Slick Profile](http://slick.lightbend.com/doc/3.5.0/concepts.html#profiles) 
+for your specific database as follows depending on your slick version:
 
 ```scala
 import be.venneborg.refined.RefinedMapping
@@ -44,13 +44,26 @@ import be.venneborg.refined.RefinedSupport
 trait MyRefinedProfile extends slick.jdbc.XXXProfile
   with RefinedMapping
   with RefinedSupport {
-
-  override val api = new API with RefinedImplicits
-
+  // for slick versions starting from 3.5.x
+  override val api = new JdbcAPI with RefinedImplicits
 }
 
 object MyRefinedProfile extends TestRefinedProfile
+```
 
+For older slick versions (up to 3.4.x) you need to use the following:
+```scala
+import be.venneborg.refined.RefinedMapping
+import be.venneborg.refined.RefinedSupport
+
+trait MyRefinedProfile extends slick.jdbc.XXXProfile
+  with RefinedMapping
+  with RefinedSupport {
+  // for slick versions up to 3.4.x
+  override val api = new API with RefinedImplicits
+}
+
+object MyRefinedProfile extends TestRefinedProfile
 ```
 
 ### Mapping Refined types using a Refined Schema

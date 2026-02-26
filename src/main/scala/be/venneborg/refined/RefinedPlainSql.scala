@@ -72,39 +72,39 @@ object RefinedPlainSql {
 
   //support for setting refined parameters in plain SQL queries
 
-  implicit def refinedStringSetParameter[P] = SetParameter[Refined[String, P]]((r, p) => p.setString(r.value))
-  implicit def refinedOptionStringSetParameter[P] = SetParameter[Option[Refined[String, P]]]((r, p) => p.setStringOption(r.map(_.value)))
+  implicit def refinedStringSetParameter[P]: SetParameter[Refined[String, P]] = SetParameter[Refined[String, P]]((r, p) => p.setString(r.value))
+  implicit def refinedOptionStringSetParameter[P]: SetParameter[Option[Refined[String, P]]] = SetParameter[Option[Refined[String, P]]]((r, p) => p.setStringOption(r.map(_.value)))
 
-  implicit def refinedIntSetParameter[P] = SetParameter[Refined[Int, P]]((r, p) => p.setInt(r.value))
-  implicit def refinedOptionIntSetParameter[P] = SetParameter[Option[Refined[Int, P]]]((r, p) => p.setIntOption(r.map(_.value)))
+  implicit def refinedIntSetParameter[P]: SetParameter[Refined[Int, P]] = SetParameter[Refined[Int, P]]((r, p) => p.setInt(r.value))
+  implicit def refinedOptionIntSetParameter[P]: SetParameter[Option[Refined[Int, P]]] = SetParameter[Option[Refined[Int, P]]]((r, p) => p.setIntOption(r.map(_.value)))
 
-  implicit def refinedLongSetParameter[P] = SetParameter[Refined[Long, P]]((r, p) => p.setLong(r.value))
-  implicit def refinedOptionLongSetParameter[P] = SetParameter[Option[Refined[Long, P]]]((r, p) => p.setLongOption(r.map(_.value)))
+  implicit def refinedLongSetParameter[P]: SetParameter[Refined[Long, P]] = SetParameter[Refined[Long, P]]((r, p) => p.setLong(r.value))
+  implicit def refinedOptionLongSetParameter[P]: SetParameter[Option[Refined[Long, P]]] = SetParameter[Option[Refined[Long, P]]]((r, p) => p.setLongOption(r.map(_.value)))
 
-  implicit def refinedDoubleSetParameter[P] = SetParameter[Refined[Double, P]]((r, p) => p.setDouble(r.value))
-  implicit def refinedOptionDoubleSetParameter[P] = SetParameter[Option[Refined[Double, P]]]((r, p) => p.setDoubleOption(r.map(_.value)))
+  implicit def refinedDoubleSetParameter[P]: SetParameter[Refined[Double, P]] = SetParameter[Refined[Double, P]]((r, p) => p.setDouble(r.value))
+  implicit def refinedOptionDoubleSetParameter[P]: SetParameter[Option[Refined[Double, P]]] = SetParameter[Option[Refined[Double, P]]]((r, p) => p.setDoubleOption(r.map(_.value)))
 
-  implicit def refinedFloatSetParameter[P] = SetParameter[Refined[Float, P]]((r, p) => p.setFloat(r.value))
-  implicit def refinedOptionFloatSetParameter[P] = SetParameter[Option[Refined[Float, P]]]((r, p) => p.setFloatOption(r.map(_.value)))
+  implicit def refinedFloatSetParameter[P]: SetParameter[Refined[Float, P]] = SetParameter[Refined[Float, P]]((r, p) => p.setFloat(r.value))
+  implicit def refinedOptionFloatSetParameter[P]: SetParameter[Option[Refined[Float, P]]] = SetParameter[Option[Refined[Float, P]]]((r, p) => p.setFloatOption(r.map(_.value)))
 
-  implicit def refinedBigDecimalSetParameter[P] = SetParameter[Refined[BigDecimal, P]]((r, p) => p.setBigDecimal(r.value))
-  implicit def refinedOptionBigDecimalSetParameter[P] = SetParameter[Option[Refined[BigDecimal, P]]]((r, p) => p.setBigDecimalOption(r.map(_.value)))
+  implicit def refinedBigDecimalSetParameter[P]: SetParameter[Refined[BigDecimal, P]] = SetParameter[Refined[BigDecimal, P]]((r, p) => p.setBigDecimal(r.value))
+  implicit def refinedOptionBigDecimalSetParameter[P]: SetParameter[Option[Refined[BigDecimal, P]]] = SetParameter[Option[Refined[BigDecimal, P]]]((r, p) => p.setBigDecimalOption(r.map(_.value)))
 
-  implicit def refinedShortSetParameter[P] = SetParameter[Refined[Short, P]]((r, p) => p.setShort(r.value))
-  implicit def refinedOptionShortSetParameter[P] = SetParameter[Option[Refined[Short, P]]]((r, p) => p.setShortOption(r.map(_.value)))
+  implicit def refinedShortSetParameter[P]: SetParameter[Refined[Short, P]] = SetParameter[Refined[Short, P]]((r, p) => p.setShort(r.value))
+  implicit def refinedOptionShortSetParameter[P]: SetParameter[Option[Refined[Short, P]]] = SetParameter[Option[Refined[Short, P]]]((r, p) => p.setShortOption(r.map(_.value)))
 
-  implicit def refinedByteSetParameter[P] = SetParameter[Refined[Byte, P]]((r, p) => p.setByte(r.value))
-  implicit def refinedOptionByteSetParameter[P] = SetParameter[Option[Refined[Byte, P]]]((r, p) => p.setByteOption(r.map(_.value)))
+  implicit def refinedByteSetParameter[P]: SetParameter[Refined[Byte, P]] = SetParameter[Refined[Byte, P]]((r, p) => p.setByte(r.value))
+  implicit def refinedOptionByteSetParameter[P]: SetParameter[Option[Refined[Byte, P]]] = SetParameter[Option[Refined[Byte, P]]]((r, p) => p.setByteOption(r.map(_.value)))
 
-  implicit def refinedBooleanSetParameter[P] = SetParameter[Refined[Boolean, P]]((r, p) => p.setBoolean(r.value))
-  implicit def refinedOptionBooleanSetParameter[P] = SetParameter[Option[Refined[Boolean, P]]]((r, p) => p.setBooleanOption(r.map(_.value)))
+  implicit def refinedBooleanSetParameter[P]: SetParameter[Refined[Boolean, P]] = SetParameter[Refined[Boolean, P]]((r, p) => p.setBoolean(r.value))
+  implicit def refinedOptionBooleanSetParameter[P]: SetParameter[Option[Refined[Boolean, P]]] = SetParameter[Option[Refined[Boolean, P]]]((r, p) => p.setBooleanOption(r.map(_.value)))
 
-  implicit def refinedDateSetParameter[P] = SetParameter[Refined[Date, P]]((r, p) => p.setDate(r.value))
-  implicit def refinedOptionDateSetParameter[P] = SetParameter[Option[Refined[Date, P]]]((r, p) => p.setDateOption(r.map(_.value)))
+  implicit def refinedDateSetParameter[P]: SetParameter[Refined[Date, P]] = SetParameter[Refined[Date, P]]((r, p) => p.setDate(r.value))
+  implicit def refinedOptionDateSetParameter[P]: SetParameter[Option[Refined[Date, P]]] = SetParameter[Option[Refined[Date, P]]]((r, p) => p.setDateOption(r.map(_.value)))
 
-  implicit def refinedTimeSetParameter[P] = SetParameter[Refined[Time, P]]((r, p) => p.setTime(r.value))
-  implicit def refinedOptionTimeSetParameter[P] = SetParameter[Option[Refined[Time, P]]]((r, p) => p.setTimeOption(r.map(_.value)))
+  implicit def refinedTimeSetParameter[P]: SetParameter[Refined[Time, P]] = SetParameter[Refined[Time, P]]((r, p) => p.setTime(r.value))
+  implicit def refinedOptionTimeSetParameter[P]: SetParameter[Option[Refined[Time, P]]] = SetParameter[Option[Refined[Time, P]]]((r, p) => p.setTimeOption(r.map(_.value)))
 
-  implicit def refinedTimestampSetParameter[P] = SetParameter[Refined[Timestamp, P]]((r, p) => p.setTimestamp(r.value))
-  implicit def refinedOptionTimestampSetParameter[P] = SetParameter[Option[Refined[Timestamp, P]]]((r, p) => p.setTimestampOption(r.map(_.value)))
+  implicit def refinedTimestampSetParameter[P]: SetParameter[Refined[Timestamp, P]] = SetParameter[Refined[Timestamp, P]]((r, p) => p.setTimestamp(r.value))
+  implicit def refinedOptionTimestampSetParameter[P]: SetParameter[Option[Refined[Timestamp, P]]] = SetParameter[Option[Refined[Timestamp, P]]]((r, p) => p.setTimestampOption(r.map(_.value)))
 }

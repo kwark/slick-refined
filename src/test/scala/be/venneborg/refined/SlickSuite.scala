@@ -10,6 +10,8 @@ import org.scalatest.matchers.should.Matchers
 
 class SlickSuite extends AnyFunSuite with BeforeAndAfterEach with ScalaFutures with Matchers {
 
+  override implicit val patienceConfig: PatienceConfig = PatienceConfig(timeout = scaled(Span(5, Seconds)))
+
   import TestRefinedProfile.api._
   import TestRefinedProfile.mapping._
 
@@ -44,7 +46,7 @@ class SlickSuite extends AnyFunSuite with BeforeAndAfterEach with ScalaFutures w
   val testTable = TableQuery[TestTable]
 
 
-  var db: TestRefinedProfile.backend.DatabaseDef = _
+  var db: TestRefinedProfile.backend.Database = _
 
   test("storing and retrieving valid refined types") {
     db.run(persons ++= Seq(peter, bart, spaceCowboy)).futureValue
@@ -171,7 +173,7 @@ class SlickSuite extends AnyFunSuite with BeforeAndAfterEach with ScalaFutures w
     db.run(persons.map(_.age % 2).result).futureValue should contain theSameElementsInOrderAs Seq(1, 0, 1)
     db.run(persons.map(_.age.abs).result).futureValue should contain theSameElementsInOrderAs Seq(35, 18, 99)
     db.run(persons.map(_.age.sign).result).futureValue should contain theSameElementsInOrderAs Seq(1, 1, 1)
-    db.run(persons.map(_.age.toRadians).result).futureValue should contain theSameElementsInOrderAs Seq(0.6108652381980153, 0.3141592653589793, 1.7278759594743864)
+    db.run(persons.map(_.age.toRadians).result).futureValue should contain theSameElementsInOrderAs Seq(0.6108652381980153, 0.3141592653589793, 1.7278759594743862)
     db.run(persons.map(_.age.toDegrees).result).futureValue should contain theSameElementsInOrderAs Seq(2005.3522829578812, 1031.324031235482, 5672.28217179515)
 
   }
@@ -195,7 +197,7 @@ class SlickSuite extends AnyFunSuite with BeforeAndAfterEach with ScalaFutures w
 
     db.run(persons.map(_.age).max.result).futureValue shouldEqual Some(spaceCowboy.age)
     db.run(persons.map(_.age).min.result).futureValue shouldEqual Some(bart.age)
-    db.run(persons.map(_.age).avg.result).futureValue shouldEqual Some(50)
+    db.run(persons.map(_.age).avg.result).futureValue shouldEqual Some(51)
     db.run(persons.map(_.age).sum.result).futureValue shouldEqual Some(18+35+99)
   }
 
@@ -217,7 +219,7 @@ class SlickSuite extends AnyFunSuite with BeforeAndAfterEach with ScalaFutures w
     db.run(persons.map(_.negative % 10L).result).futureValue should contain theSameElementsInOrderAs Seq(-2L, 0L, -1L)
     db.run(persons.map(_.negative.abs).result).futureValue   should contain theSameElementsInOrderAs Seq(2305843009213693952L, 10000000000L, 1L)
     db.run(persons.map(_.negative.sign).result).futureValue  should contain theSameElementsInOrderAs Seq(-1L, -1L, -1L)
-    db.run(persons.map(_.negative.toRadians).result).futureValue should contain theSameElementsInOrderAs Seq(-4.0244552544872904E16, -1.7453292519943294E8, -0.017453292519943295)
+    db.run(persons.map(_.negative.toRadians).result).futureValue should contain theSameElementsInOrderAs Seq(-4.0244552544872904E16, -1.7453292519943297E8, -0.017453292519943295)
     db.run(persons.map(_.negative.toDegrees).result).futureValue should contain theSameElementsInOrderAs Seq(-1.3211507264769006E20, -5.729577951308232E11, -57.29577951308232)
   }
 
@@ -240,7 +242,7 @@ class SlickSuite extends AnyFunSuite with BeforeAndAfterEach with ScalaFutures w
     db.run(persons.map(_.even.abs).result).futureValue   should contain theSameElementsInOrderAs Seq(Some(22L), Some(922337203685477580L), None)
     db.run(persons.map(_.even.sign).result).futureValue  should contain theSameElementsInOrderAs Seq(Some(-1L), Some(1L), None)
     db.run(persons.map(_.even.toRadians).result).futureValue should contain theSameElementsInOrderAs Seq(Some(-0.3839724354387525), Some(1.6097821017949162E16), None)
-    db.run(persons.map(_.even.toDegrees).result).futureValue should contain theSameElementsInOrderAs Seq(Some(-1260.5071492878112), Some(5.284602905907602E19), None)
+    db.run(persons.map(_.even.toDegrees).result).futureValue should contain theSameElementsInOrderAs Seq(Some(-1260.507149287811), Some(5.284602905907603E19), None)
   }
 
   test("single column extension methods for a refined optional long") {
@@ -300,7 +302,5 @@ class SlickSuite extends AnyFunSuite with BeforeAndAfterEach with ScalaFutures w
   override def afterEach(): Unit = {
     db.close()
   }
-
-  override implicit def patienceConfig = PatienceConfig(timeout = scaled(Span(5, Seconds)))
 
 }

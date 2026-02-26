@@ -4,7 +4,7 @@ trait TestRefinedProfile extends slick.jdbc.H2Profile
   with RefinedMapping
   with RefinedSupport {
 
-  override val api = new API with RefinedImplicits
+  override val api = new JdbcAPI with RefinedImplicits
 
 }
 

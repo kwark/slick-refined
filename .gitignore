@@ -3,3 +3,4 @@ local.*
 project/project/
 project/target/
 target/
+/.bsp/sbt.json

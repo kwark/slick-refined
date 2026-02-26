@@ -32,6 +32,7 @@ inThisBuild(List(
   licenses := Seq(("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.txt"))),
   homepage := Some(url("https://github.com/kwark/slick-refined")),
 
+  Test / classLoaderLayeringStrategy := ClassLoaderLayeringStrategy.Flat,
   Test / publishArtifact := false,
   parallelExecution := false,
 

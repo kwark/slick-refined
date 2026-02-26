@@ -32,7 +32,6 @@ inThisBuild(List(
   licenses := Seq(("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.txt"))),
   homepage := Some(url("https://github.com/kwark/slick-refined")),
 
-  Test / classLoaderLayeringStrategy := ClassLoaderLayeringStrategy.Flat,
   Test / publishArtifact := false,
   parallelExecution := false,
 
@@ -45,5 +44,5 @@ libraryDependencies ++= Seq(
   "eu.timepit"                 %%    "refined"                        % "0.11.3",
   "com.typesafe.slick"         %%    "slick"                          % "3.5.2",
   "org.scalatest"              %%    "scalatest"                      % "3.2.19"  % Test,
-  "com.h2database"              %    "h2"                             % "2.4.240" % Test
+  "com.h2database"              %    "h2"                             % "1.4.200" % Test // JDK 1.8 compatible version of H2
 )

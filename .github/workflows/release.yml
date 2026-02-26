@@ -2,19 +2,19 @@ name: release
 on:
   push:
     branches: [master]
-    tags: ["*"]
+    tags: ["**"]
 jobs:
   publish:
     runs-on: ubuntu-latest
     if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: "17"
+          cache: sbt
       - uses: sbt/setup-sbt@v1
-      - uses: olafurpg/setup-gpg@v3
       - name: publish ${{ github.ref }}
         run: sbt ci-release
         env:

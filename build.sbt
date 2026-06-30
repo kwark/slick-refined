@@ -41,7 +41,7 @@ inThisBuild(List(
 
 
 libraryDependencies ++= Seq(
-  "eu.timepit"                 %%    "refined"                        % "0.11.3",
+  "eu.timepit"                 %%    "refined"                        % "0.11.4",
   "com.typesafe.slick"         %%    "slick"                          % "3.6.1",
   "org.scalatest"              %%    "scalatest"                      % "3.2.19"  % Test,
   "com.h2database"              %    "h2"                             % "2.4.240" % Test
